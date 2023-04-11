@@ -19,9 +19,9 @@ h4 {
 }
 .menu_nime {
   display: flex;
-  width: 53%;
+  width: 45%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 .menu_top {
   display: flex;
