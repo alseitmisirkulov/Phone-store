@@ -3,14 +3,16 @@ import imgSvg from './../assets/images/cases1.svg';
 import plusSvg from './../assets/images/plus.svg';
 import minusSvg from './../assets/images/minus.svg';
 import delSvg from './../assets/images/del.svg';
-import './Cart.scss';
+import deliverySvg from './../assets/images/delivery.svg';
+import './../styles/Cart.scss';
+import { Select } from '../components/common/select/Select';
 
 export const Cart = () => {
   return (
     <div className="cart-wrapper container">
+      <h4>Корзина</h4>
       <div className="row">
         <div className="col">
-          <h4>Корзина</h4>
           <div>
             <div className="cart-item d-flex justify-content-between mb-4">
               <div className="d-flex justify-content-between">
@@ -43,14 +45,22 @@ export const Cart = () => {
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
-              <div>
-                <div></div>
+              <div className="d-flex justify-content-between align-items-center mt-3">
+                <Select selectType={deliverySvg} text="Доставка курьером" />
                 <span> 499 ₸</span>
               </div>
             </div>
           </div>
         </div>
-        <div className="col"></div>
+        <div className="col d-flex align-items-start justify-content-end">
+          <div className='cart-total'>
+            <div className="d-flex align-items-center justify-content-between">
+              <span>ИТОГО</span>
+              <span>₸ 2 927</span>
+            </div>
+            <button>Перейти к оформлению</button>
+          </div>
+        </div>
       </div>
     </div>
   );
