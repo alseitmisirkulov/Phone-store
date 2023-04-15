@@ -6,8 +6,8 @@ import { HomePage } from './pages/HomePage';
 import { Routes, Route } from 'react-router-dom';
 import { Favorites } from './pages/Favorites';
 import { Service } from './pages/Service';
-import { EmptyCart } from './pages/EmptyCart';
 import { NotFound } from './pages/NotFound';
+import { CatalogItem } from './pages/CatalogItem';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/service" element={<Service />} />
-        {/* <Route path="/emptycart" element={<EmptyCart />} /> */}
+        <Route path="/catalog-item" element={<CatalogItem />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

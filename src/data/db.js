@@ -7,6 +7,9 @@ import cases1 from './../assets/images/cases1.svg';
 import cases2 from './../assets/images/cases2.svg';
 import cases3 from './../assets/images/cases3.svg';
 
+import imgSvg from './../assets/images/cases1.svg';
+
+
 export const headphones = [
   {
     id: 1,
@@ -94,4 +97,23 @@ export const cases = [
     img: cases3,
     description:"Кожаные",
   }
+]
+
+export const cartItems = [
+  {
+    id: 1,
+    img: imgSvg,
+    count: 1,
+    title: "Apple BYZ S852I",
+    price: 2927,
+    itemTotalPrice: 2927
+  },
+  {
+    id: 2,
+    img: imgSvg,
+    count: 2,
+    title: "Nokia   BYZ S852I",
+    price: 2927,
+    itemTotalPrice: 2927
+  },
 ]
