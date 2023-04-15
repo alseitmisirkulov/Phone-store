@@ -9,7 +9,7 @@ export const Cases = () => {
         {cases.map((item) => (
           <div key={item.id} className="d-flex align-items-center justify-content-center flex-column">
             <img src={item.img} alt={item.title} />
-            <p>{item.title}</p>
+            <p>{item.description}</p>
           </div>
         ))}
       </div>

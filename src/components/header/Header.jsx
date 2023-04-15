@@ -10,7 +10,7 @@ export const Header = () => {
   return (
     <header className="menu container">
       <div className="menu_time">
-        <Link to="/">
+        <Link to="/" style={{marginRight:20}}>
           <img src={logo} alt="" />
         </Link>
         <Select 
