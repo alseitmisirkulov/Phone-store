@@ -59,26 +59,29 @@ export const dataBase = [
   {
     cases: [
       {
-        id: 1,
+        id: 7,
         img: cases1,
         description: 'Стеклянные',
+        price: 3000,
       },
       {
-        id: 2,
+        id: 8,
         img: cases2,
         description: 'Силиконовые',
+        price: 3000,
       },
       {
-        id: 3,
+        id: 9,
         img: cases3,
         description: 'Кожаные',
+        price: 3000,
       },
     ],
   },
   {
     airpods: [
       {
-        id: 1,
+        id: 10,
         img: airpods1,
         name: 'Apple BYZ S852I',
         newPrice: 2927,
@@ -86,7 +89,7 @@ export const dataBase = [
         rating: 4.7,
       },
       {
-        id: 2,
+        id: 11,
         img: airpods1,
         name: 'Apple FRd S852I',
         newPrice: 2500,
@@ -94,7 +97,7 @@ export const dataBase = [
         rating: 4.7,
       },
       {
-        id: 3,
+        id: 12,
         img: airpods1,
         name: 'Apple BYZ S852I',
         newPrice: 3000,
@@ -102,24 +105,5 @@ export const dataBase = [
         rating: 4.7,
       },
     ],
-  },
-];
-
-export const cartItems = [
-  {
-    id: 1,
-    img: imgSvg,
-    count: 1,
-    title: 'Apple BYZ S852I',
-    price: 2927,
-    itemTotalPrice: 2927,
-  },
-  {
-    id: 2,
-    img: imgSvg,
-    count: 2,
-    title: 'Nokia   BYZ S852I',
-    price: 2927,
-    itemTotalPrice: 2927,
   },
 ];

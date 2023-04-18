@@ -1,17 +1,44 @@
 import catalogItemImg from './../assets/images/catalogItemImg.png';
 import './../styles/CatalogItems.scss';
 import addCart from './../assets/images/cart.svg';
+import { useParams } from 'react-router-dom';
 
-export const CatalogItem = ({ handleAddToCart }) => {
+export const CatalogItem = ({ handleAddToCart, db }) => {
+  window.scrollTo(0, 0);
+  const { id } = useParams();
+
+  const headphonesItems = db[0].headphones.find((item) => item.id === parseInt(id));
+  const casesItems = db[1].cases.find((item) => item.id === parseInt(id));
+  const airPodsItems = db[2].airpods.find((item) => item.id === parseInt(id));
+
   const onAddToCart = () => {
-    const newObj = {
-      id: 6,
-      img: catalogItemImg,
-      title: 'Автодержатель',
-      price: 3000,
-      count:1
-    };
-    handleAddToCart(newObj)
+    let newObj = null;
+    if (headphonesItems) {
+      newObj = {
+        id: headphonesItems.id,
+        img: headphonesItems.img,
+        title: headphonesItems.title,
+        price: headphonesItems.newPrice,
+        count: 1,
+      };
+    } else if (casesItems) {
+      newObj = {
+        id: casesItems.id,
+        img: casesItems.img,
+        title: casesItems.description,
+        price: casesItems.price,
+        count: 1,
+      };
+    } else if (airPodsItems) {
+      newObj = {
+        id: airPodsItems.id,
+        img: airPodsItems.img,
+        title: airPodsItems.description,
+        price: airPodsItems.newPrice,
+        count: 1,
+      };
+    }
+    handleAddToCart(newObj);
   };
 
   return (
@@ -19,7 +46,18 @@ export const CatalogItem = ({ handleAddToCart }) => {
       <h4>Автодержатель</h4>
       <div className="catalog-item__images">
         <figure>
-          <img src={catalogItemImg} alt="" />
+          <img
+            src={
+              headphonesItems
+                ? headphonesItems.img
+                : casesItems
+                ? casesItems.img
+                : airPodsItems
+                ? airPodsItems.img
+                : ''
+            }
+            alt="фото товара"
+          />
           <img src={catalogItemImg} alt="" />
           <img src={catalogItemImg} alt="" />
           <img src={catalogItemImg} alt="" />

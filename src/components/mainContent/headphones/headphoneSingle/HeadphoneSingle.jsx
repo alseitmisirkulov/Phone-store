@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export const HeadphoneSingle = ({item}) => {
   const [active, setActive] = useState(false);
-  console.log(active);
+  console.log(item);
 
   const selectFavoriteItem = () => {
     setActive(!active);
@@ -30,7 +30,7 @@ export const HeadphoneSingle = ({item}) => {
         />
       )}
 
-      <Link to="/catalog-item">
+      <Link to={`/catalog-item/${item.id}`}>
         <figure className="d-flex align-items-center justify-content-center ">
           <img src={item.img} alt={item.title} />
         </figure>

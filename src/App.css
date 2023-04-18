@@ -26,4 +26,19 @@ h4 {
 .menu_top {
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+.menu_top a{
+  text-decoration: none;
+}
+.menu_top span{
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: yellowgreen;
+  color: aliceblue;
+  font-weight: 600;
 }
