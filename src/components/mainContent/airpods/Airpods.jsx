@@ -1,14 +1,13 @@
 import React from 'react';
-import { airpodsData } from '../../../data/db';
 import star from './../../../assets/images/star.svg';
 
-const Airpods = () => {
+const Airpods = ({db}) => {
   
   return (
     <div className="airpods">
       <h4>Беспроводные наушники</h4>
       <div className="airpod d-flex flex-wrap justify-content-between gap-4">
-        {airpodsData.map((el) => (
+        {db[2].airpods.map((el) => (
           <div
             key={el.id}
             className=" d-flex align-items-center justify-content-center flex-column">
