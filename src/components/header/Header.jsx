@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import logo from './../../assets/images/logo.svg';
 import { Select } from '../common/select/Select';
 
-export const Header = () => {
+export const Header = ({totalQty}) => {
   return (
     <header className="menu container">
       <div className="menu_time">
@@ -21,8 +21,9 @@ export const Header = () => {
         <Link to="/favorites">
           <img src={likeSvg} alt="" />
         </Link>
-        <Link to="/cart">
+        <Link to="/cart" className='d-flex ailgn-items-center gap-2'>
           <img src={cartSvg} alt="" />
+          <span>{totalQty}</span>
         </Link>
       </div>
     </header>

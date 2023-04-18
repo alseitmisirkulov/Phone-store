@@ -3,7 +3,7 @@ import plusSvg from './../../assets/images/plus.svg';
 import minusSvg from './../../assets/images/minus.svg';
 import delSvg from './../../assets/images/del.svg';
 
-export const CartItem = ({element}) => {
+export const CartItem = ({element,handleRemove}) => {
   return (
     <div>
       <div className="cart-item d-flex justify-content-between mb-4">
@@ -24,7 +24,7 @@ export const CartItem = ({element}) => {
           </div>
         </div>
         <div className="d-flex flex-column justify-content-between align-items-end">
-          <img src={delSvg} alt="" />
+          <img src={delSvg} alt="" onClick={()=>handleRemove(element)}/>
           <span>{element.itemTotalPrice} ₸</span>
         </div>
       </div>
