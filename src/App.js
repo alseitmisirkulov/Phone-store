@@ -15,7 +15,7 @@ function App() {
   const [db, setDb] = useState(dataBase);
   const [emptyCartDb, setEmptyCartDb] = useState([]);
 
-  const totalQty = emptyCartDb.reduce((acc, item) => acc + item.total * item.count, 1);
+  const totalQty = emptyCartDb.reduce((acc, item) => acc + item.total * item.count, 0);
 
   const handleAddToCart = (item) => {
     const existItem = emptyCartDb.find((el) => el.id === item.id);
@@ -27,6 +27,21 @@ function App() {
       localStorage.setItem('phoneStore', JSON.stringify(newItem));
     } else {
       const newItem = [...emptyCartDb, { ...item, total: 1 }];
+      setEmptyCartDb(newItem);
+      localStorage.setItem('phoneStore', JSON.stringify(newItem));
+    }
+  };
+
+  const handleMinusItem = (item) => {
+    const existItem = emptyCartDb.find((el) => el.id === item.id);
+    if (existItem.total === 1) {
+      const newItem = emptyCartDb.filter((el) => el.id !== item.id);
+      setEmptyCartDb(newItem);
+      localStorage.setItem('phoneStore', JSON.stringify(newItem));
+    } else {
+      const newItem = emptyCartDb.map((el) =>
+        el.id === item.id ? { ...existItem, total: existItem.total - 1 } : el,
+      );
       setEmptyCartDb(newItem);
       localStorage.setItem('phoneStore', JSON.stringify(newItem));
     }
@@ -44,12 +59,19 @@ function App() {
 
   return (
     <div className="App ">
-      <Header totalQty={totalQty}/>
+      <Header totalQty={totalQty} />
       <Routes>
         <Route path="/" element={<HomePage db={db} />} />
         <Route
           path="/cart"
-          element={<Cart emptyCartDb={emptyCartDb} handleRemove={handleRemove} />}
+          element={
+            <Cart
+              emptyCartDb={emptyCartDb}
+              handleRemove={handleRemove}
+              handleAddToCart={handleAddToCart}
+              handleMinusItem={handleMinusItem}
+            />
+          }
         />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/service" element={<Service />} />

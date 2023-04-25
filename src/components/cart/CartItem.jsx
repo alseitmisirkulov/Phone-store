@@ -3,7 +3,7 @@ import plusSvg from './../../assets/images/plus.svg';
 import minusSvg from './../../assets/images/minus.svg';
 import delSvg from './../../assets/images/del.svg';
 
-export const CartItem = ({element,handleRemove}) => {
+export const CartItem = ({ element, handleRemove, handleAddToCart, handleMinusItem }) => {
   return (
     <div>
       <div className="cart-item d-flex justify-content-between mb-4">
@@ -13,9 +13,9 @@ export const CartItem = ({element,handleRemove}) => {
               <img src={element.img} alt={element.title} />
             </figure>
             <div className="d-flex gap-3">
-              <img src={plusSvg} alt="" />
-              {element.count}
-              <img src={minusSvg} alt="" />
+              <img src={plusSvg} alt="Плюс" onClick={() => handleAddToCart(element)} />
+              {element.total}
+              <img src={minusSvg} alt="Минус" onClick={()=>handleMinusItem(element)}/>
             </div>
           </div>
           <div className="d-flex justify-content-center flex-column">
@@ -24,7 +24,7 @@ export const CartItem = ({element,handleRemove}) => {
           </div>
         </div>
         <div className="d-flex flex-column justify-content-between align-items-end">
-          <img src={delSvg} alt="" onClick={()=>handleRemove(element)}/>
+          <img src={delSvg} alt="" onClick={() => handleRemove(element)} />
           <span>{element.itemTotalPrice} ₸</span>
         </div>
       </div>
