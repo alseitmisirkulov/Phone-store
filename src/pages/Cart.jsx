@@ -6,7 +6,7 @@ import { CartDelivery } from '../components/cart/CartDelivery';
 import { CartTotal } from '../components/cart/CartTotal';
 import { EmptyCart } from './EmptyCart';
 
-export const Cart = ({emptyCartDb,handleRemove}) => {
+export const Cart = ({ emptyCartDb, handleRemove, handleAddToCart, handleMinusItem }) => {
   return (
     <>
       {emptyCartDb.length ? (
@@ -16,7 +16,14 @@ export const Cart = ({emptyCartDb,handleRemove}) => {
             <div className="col">
               <div>
                 {emptyCartDb.map((element) => (
-                  <CartItem handleRemove={handleRemove} key={element.id} {...element} element={element} />
+                  <CartItem
+                    handleMinusItem={handleMinusItem}
+                    handleAddToCart={handleAddToCart}
+                    handleRemove={handleRemove}
+                    key={element.id}
+                    {...element}
+                    element={element}
+                  />
                 ))}
 
                 <CartDelivery />
