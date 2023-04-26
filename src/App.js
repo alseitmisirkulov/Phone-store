@@ -9,12 +9,12 @@ import { Service } from './pages/Service';
 import { NotFound } from './pages/NotFound';
 import { CatalogItem } from './pages/CatalogItem';
 import { useState, useEffect } from 'react';
-import { cartItems, dataBase } from './data/db';
+import { dataBase } from './data/db';
 
 function App() {
   const [db, setDb] = useState(dataBase);
   const [emptyCartDb, setEmptyCartDb] = useState([]);
-
+  const [favorite, setFavorite] = useState([]);
   const totalQty = emptyCartDb.reduce((acc, item) => acc + item.total * item.count, 0);
 
   const handleAddToCart = (item) => {
@@ -59,9 +59,9 @@ function App() {
 
   return (
     <div className="App ">
-      <Header totalQty={totalQty} />
+      <Header totalQty={totalQty} favorite={favorite}/>
       <Routes>
-        <Route path="/" element={<HomePage db={db} />} />
+        <Route path="/" element={<HomePage db={db} favorite={favorite} setFavorite={setFavorite} />} />
         <Route
           path="/cart"
           element={
@@ -73,7 +73,7 @@ function App() {
             />
           }
         />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites favorite={favorite} setFavorite={setFavorite}/>} />
         <Route path="/service" element={<Service />} />
         <Route
           path="/catalog-item/:id"

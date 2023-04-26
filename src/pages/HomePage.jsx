@@ -1,12 +1,11 @@
-import React from 'react'
-import { About } from '../components/about/About'
+import { About } from '../components/about/About';
 import { MainContent } from './../components/mainContent/MainContent';
 
-export const HomePage = ({db}) => {
+export const HomePage = ({ db, favorite, setFavorite }) => {
   return (
     <div>
-      <About/>
-      <MainContent db={db}/>
+      <About />
+      <MainContent db={db} favorite={favorite} setFavorite={setFavorite}/>
     </div>
-  ) 
-}
+  );
+};
