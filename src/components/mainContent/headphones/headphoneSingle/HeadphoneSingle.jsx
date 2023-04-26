@@ -4,13 +4,29 @@ import favClick from './../../../../assets/images/clickFav.svg';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-export const HeadphoneSingle = ({item}) => {
+export const HeadphoneSingle = ({ item, favorite, setFavorite }) => {
   const [active, setActive] = useState(false);
-  console.log(item);
+
+  // console.log(item);
+
+  //!Функция добавления товара в избранное
+  const addFavorites = (item) => {
+    setFavorite((prevFavorite) => [...prevFavorite, item]);
+  };
+  //!Функция удаления товара в избранное
+  const removeFavorites = (itemId) => {
+    setFavorite(favorite.filter((f) => f.id !== itemId));
+  };
 
   const selectFavoriteItem = () => {
     setActive(!active);
+    if (!active) {
+      addFavorites(item);
+    } else {
+      removeFavorites(item.id);
+    }
   };
+  console.log(favorite);
 
   return (
     <div className="position-relative d-flex align-items-center justify-content-center flex-column">
