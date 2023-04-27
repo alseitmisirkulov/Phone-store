@@ -2,7 +2,7 @@ import star from './../../../../assets/images/star.svg';
 import fav from './../../../../assets/images/fav.svg';
 import favClick from './../../../../assets/images/clickFav.svg';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const HeadphoneSingle = ({ item, favorite, setFavorite }) => {
   const [active, setActive] = useState(false);
@@ -13,6 +13,23 @@ export const HeadphoneSingle = ({ item, favorite, setFavorite }) => {
   const addFavorites = (item) => {
     setFavorite((prevFavorite) => [...prevFavorite, item]);
   };
+
+  const handleAddToCart = (item) => {
+    const existItem = favorite.find((el) => el.id === item.id);
+    if (existItem) {
+      const newItem = favorite.map((el) =>
+        el.id === item.id ? { ...existItem, total: item.total + 1 } : el,
+      );
+      setFavorite(newItem);
+      localStorage.setItem('favoriteStore', JSON.stringify(newItem));
+    } else {
+      const newItem = [...favorite, { ...item, total: 1 }];
+      setFavorite(newItem);
+      localStorage.setItem('favoriteStore', JSON.stringify(newItem));
+    }
+  };
+  
+
   //!Функция удаления товара в избранное
   const removeFavorites = (itemId) => {
     setFavorite(favorite.filter((f) => f.id !== itemId));
@@ -21,12 +38,14 @@ export const HeadphoneSingle = ({ item, favorite, setFavorite }) => {
   const selectFavoriteItem = () => {
     setActive(!active);
     if (!active) {
-      addFavorites(item);
+      handleAddToCart(item);
     } else {
       removeFavorites(item.id);
     }
   };
   console.log(favorite);
+
+
 
   return (
     <div className="position-relative d-flex align-items-center justify-content-center flex-column">

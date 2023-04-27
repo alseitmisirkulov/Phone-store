@@ -53,15 +53,25 @@ function App() {
     localStorage.setItem('phoneStore', JSON.stringify(newItem));
   };
 
+  const handleRemoveFav = (item) => {
+    const newItem = favorite.filter((el) => el.id !== item.id);
+    setFavorite(newItem);
+    localStorage.setItem('favoriteStore', JSON.stringify(newItem));
+  };
+
   useEffect(() => {
     setEmptyCartDb(JSON.parse(localStorage.getItem('phoneStore')) || []);
+    setFavorite(JSON.parse(localStorage.getItem('favoriteStore')) || []);
   }, []);
 
   return (
     <div className="App ">
-      <Header totalQty={totalQty} favorite={favorite}/>
+      <Header totalQty={totalQty} favorite={favorite} />
       <Routes>
-        <Route path="/" element={<HomePage db={db} favorite={favorite} setFavorite={setFavorite} />} />
+        <Route
+          path="/"
+          element={<HomePage db={db} favorite={favorite} setFavorite={setFavorite} />}
+        />
         <Route
           path="/cart"
           element={
@@ -73,7 +83,16 @@ function App() {
             />
           }
         />
-        <Route path="/favorites" element={<Favorites favorite={favorite} setFavorite={setFavorite}/>} />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              favorite={favorite}
+              setFavorite={setFavorite}
+              handleRemoveFav={handleRemoveFav}
+            />
+          }
+        />
         <Route path="/service" element={<Service />} />
         <Route
           path="/catalog-item/:id"

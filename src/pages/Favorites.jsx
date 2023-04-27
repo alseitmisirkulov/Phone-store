@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import './../styles/Favorite.scss';
+import closeBtn from './../assets/images/x-circle.svg';
 
-export const Favorites = ({ favorite }) => {
+export const Favorites = ({ favorite, handleRemoveFav }) => {
   return (
     <>
       {favorite.length ? (
@@ -11,7 +12,15 @@ export const Favorites = ({ favorite }) => {
             <h4>Наушники</h4>
             <div className="d-flex flex-wrap gap-4 justify-content-between">
               {favorite.map((item) => (
-                <div className="favorite-page__card position-relative d-flex align-items-center justify-content-center flex-column">
+                <div
+                  key={item.id}
+                  className="favorite-page__card position-relative d-flex align-items-center justify-content-center flex-column">
+                  <img
+                    className="closeBtn"
+                    src={closeBtn}
+                    alt=""
+                    onClick={() => handleRemoveFav(item)}
+                  />
                   <Link to={`/catalog-item/${item.id}`}>
                     <figure className="d-flex align-items-center justify-content-center ">
                       <img src={item.img} alt={item.title} />
@@ -35,7 +44,7 @@ export const Favorites = ({ favorite }) => {
           </div>
         </div>
       ) : (
-        <p style={{ fontSize: '25px',height:'46vh', marginTop: '50px', textAlign: 'center' }}>
+        <p style={{ fontSize: '25px', height: '46vh', marginTop: '50px', textAlign: 'center' }}>
           Страница избранных пуста!
         </p>
       )}
