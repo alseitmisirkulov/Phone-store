@@ -7,8 +7,15 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     padding: 21px;
+    position: relative;
     > figure {
       height: 237px;
+    }
+    .closeBtn{
+      position: absolute; 
+      top: 15px;
+      left: 15px;
+      cursor: pointer;
     }
   }
 }
