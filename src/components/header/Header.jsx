@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import logo from './../../assets/images/logo.svg';
 import { Select } from '../common/select/Select';
 
+
 export const Header = ({ totalQty, favorite }) => {
+  
   return (
     <header className="menu container">
       <div className="menu_time">
