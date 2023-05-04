@@ -8,17 +8,17 @@ export const Footer = () => {
   return (
     <footer className="container footer d-flex justify-content-between p-4 mt-5">
       <nav>
-        <img src={logo} alt="" />
+        <img src={logo} alt="logo" />
       </nav>
       <nav className="d-flex flex-column align-items-start gap-3">
-        <a href="">Избранное</a>
-        <a href="">Корзина</a>
-        <a href="">Контакты</a>
+        <Link to="/favorites">Избранное</Link>
+        <Link to="/cart">Корзина</Link>
+        <Link to="/contacts">Контакты</Link>
       </nav>
       <nav className="d-flex flex-column align-items-start">
         <Link to="/service">Условия сервиса</Link>
         <nav className="d-flex align-items-start w-100 mt-3 gap-2">
-          <img src={lang} alt="" />
+          <img src={lang} alt="lang" />
           <span>Каз</span>
           <span>Рус</span>
           <span>Eng</span>

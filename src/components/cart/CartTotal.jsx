@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 export const CartTotal = () => {
   return (
@@ -8,7 +8,9 @@ export const CartTotal = () => {
           <span>ИТОГО</span>
           <span>₸ 2 927</span>
         </div>
-        <button>Перейти к оформлению</button>
+        <Link to='/order'>
+          <button>Перейти к оформлению</button>
+        </Link>
       </div>
     </div>
   );
