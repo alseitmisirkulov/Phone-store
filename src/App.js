@@ -11,6 +11,9 @@ import { CatalogItem } from './pages/CatalogItem';
 import { useState, useEffect } from 'react';
 import { dataBase } from './data/db';
 import { Loader } from './components/common/select/loader/Loader';
+import { OrderPage } from './pages/OrderPage';
+import { ReadyOrder } from './pages/ReadyOrder';
+import { ContactPage } from './pages/ContactPage';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -104,6 +107,9 @@ function App() {
               }
             />
             <Route path="/service" element={<Service />} />
+            <Route path="/order" element={<OrderPage />} />
+            <Route path="/ready-order" element={<ReadyOrder />} />
+            <Route path="/contacts" element={<ContactPage />} />
             <Route
               path="/catalog-item/:id"
               element={<CatalogItem handleAddToCart={handleAddToCart} db={db} />}

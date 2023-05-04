@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import arrowDownSvg from './../../../assets/images/arrowDown.svg';
+
 import './Select.scss';
 
-export const Select = ({ selectType, text }) => {
+export const Select = ({ selectType, text, data, img }) => {
   const [active, setActive] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -18,19 +18,21 @@ export const Select = ({ selectType, text }) => {
         <img src={selectType} alt="Картинка телефона" />
         <span className="selected-option">{selectedOption || text}</span>
         <img
-          src={arrowDownSvg}
+          src={img}
           className={`arrow-icon ${active ? 'open' : ''}`}
           alt="Стрелка выпадащего списка"
         />
       </div>
       {active && (
         <div className="select-options">
-          <div className="option" onClick={() => handleOptionSelect('option 1')}>
-            option 1
-          </div>
-          <div className="option" onClick={() => handleOptionSelect('option 1')}>
-            option 1
-          </div>
+          {data.map((el) => (
+            <div
+              key={el.id}
+              className="option"
+              onClick={() => handleOptionSelect(el.option || el.model)}>
+              {el.option || el.model}
+            </div>
+          ))}
         </div>
       )}
     </div>
